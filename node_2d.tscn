@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6gl5te7cy5nc"]
+
+[ext_resource type="TileSet" uid="uid://di17rt0k5m4qe" path="res://tilemap.tres" id="1_peaae"]
+[ext_resource type="PackedScene" uid="uid://dfi4517dq7fr7" path="res://character_body_2d.tscn" id="2_okp6r"]
+[ext_resource type="Script" path="res://addons/camera_2d_plus/objects/camera_2d_plus/camera_2d_plus_script.gd" id="3_ji8yp"]
+[ext_resource type="Script" path="res://worldgen.gd" id="4_nkm55"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_okp6r")]
+position = Vector2(463, 297)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(463, 297)
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+script = ExtResource("3_ji8yp")
+NODE_TO_FOLLOW_PATH = NodePath("../Player")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Node"]
+tile_set = ExtResource("1_peaae")
+format = 2
+script = ExtResource("4_nkm55")

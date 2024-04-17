@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="HeightmapGenerator2DSettings" load_steps=5 format=3 uid="uid://db18nmw5jkbtc"]
+
+[ext_resource type="Script" path="res://addons/gaea/tile_info/tilemap_tile_info.gd" id="2_6f082"]
+[ext_resource type="Script" path="res://addons/gaea/generators/2D/heightmap_generator/heightmap_generator_2d_settings.gd" id="5_haojk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mwtbk"]
+noise_type = 3
+seed = 1569008363
+
+[sub_resource type="Resource" id="Resource_hitrj"]
+script = ExtResource("2_6f082")
+type = 1
+tilemap_layer = 0
+terrain_set = 0
+terrain = 0
+id = ""
+layer = 0
+
+[resource]
+resource_name = "Terraria-like Settings"
+script = ExtResource("5_haojk")
+tile = SubResource("Resource_hitrj")
+noise = SubResource("FastNoiseLite_mwtbk")
+infinite = true
+world_length = 128
+height_offset = 160
+height_intensity = 25
+min_height = -32
+modifiers = Array[Resource("res://addons/gaea/modifiers/2D/modifier_2d.gd")]([])
