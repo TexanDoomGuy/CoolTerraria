@@ -13,14 +13,14 @@ config_version=5
 config/name="Cool Terreria"
 run/main_scene="res://heightmap/heightmap_demo.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-boot_splash/image="res://lowHar logo.png"
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://emoji_cold.png"
+config/icon="res://emoji_cold.png"
 
 [display]
 
 window/size/viewport_width=1200
 window/size/viewport_height=720
-window/size/mode=3
 window/stretch/aspect="ignore"
 
 [editor_plugins]
