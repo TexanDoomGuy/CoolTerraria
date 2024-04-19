@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cgtpv0u1s0qv2"]
+[gd_scene load_steps=22 format=3 uid="uid://cgtpv0u1s0qv2"]
 
 [ext_resource type="PackedScene" uid="uid://dfi4517dq7fr7" path="res://character_body_2d.tscn" id="1_2dsc8"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/heightmap_generator/heightmap_generator_2d.gd" id="1_7xrgd"]
@@ -6,12 +6,41 @@
 [ext_resource type="Script" path="res://addons/camera_2d_plus/objects/camera_2d_plus/camera_2d_plus_script.gd" id="2_u5cbn"]
 [ext_resource type="Script" path="res://heightmap/Iventory.gd" id="4_foywh"]
 [ext_resource type="Resource" uid="uid://d04eeoqrjf5xi" path="res://terraria-like_generation_settings.tres" id="4_n3vqf"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="4_va7r4"]
 [ext_resource type="Texture2D" uid="uid://caoyt0ek7fmdq" path="res://heightmap/pixel-platformer-tileset - Kenney.png" id="5_m3hdp"]
 [ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="5_u1niu"]
+[ext_resource type="Script" path="res://addons/gloot/core/item_protoset.gd" id="5_xqv1o"]
 [ext_resource type="Texture2D" uid="uid://6gwie8e2kpg2" path="res://heightmap/ores.png" id="6_hdws1"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="6_y2y1c"]
 [ext_resource type="TileSet" uid="uid://di17rt0k5m4qe" path="res://tilemap.tres" id="8_nxru1"]
 [ext_resource type="Texture2D" uid="uid://bh0xh4ju2jygg" path="res://place the holder.png" id="10_wnho1"]
 [ext_resource type="Script" path="res://heightmap/Grass.gd" id="11_cww4k"]
+
+[sub_resource type="Resource" id="Resource_hxbnm"]
+script = ExtResource("5_xqv1o")
+json_data = "[
+    {
+        \"height\": \"1\",
+        \"id\": \"Wood\",
+        \"name\": \"Wood\",
+        \"stack_size\": \"999\",
+        \"width\": \"1\"
+    },
+    {
+        \"height\": \"1\",
+        \"id\": \"Gold\",
+        \"name\": \"Gold\",
+        \"stack_size\": \"999\",
+        \"width\": \"1\"
+    },
+    {
+        \"height\": \"1\",
+        \"id\": \"Diamond\",
+        \"name\": \"Diamond\",
+        \"stack_size\": \"999\",
+        \"width\": \"1\"
+    }
+]"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5d3k"]
 texture = ExtResource("10_wnho1")
@@ -253,6 +282,31 @@ position = Vector2(1194, -2905)
 
 [node name="Node2D" type="Node2D" parent="Player"]
 script = ExtResource("4_foywh")
+
+[node name="InventoryGridStacked" type="Node" parent="Player"]
+script = ExtResource("4_va7r4")
+item_protoset = SubResource("Resource_hxbnm")
+
+[node name="Wood" type="Node" parent="Player/InventoryGridStacked"]
+script = ExtResource("6_y2y1c")
+protoset = SubResource("Resource_hxbnm")
+prototype_id = "Wood"
+
+[node name="Gold" type="Node" parent="Player/InventoryGridStacked"]
+script = ExtResource("6_y2y1c")
+protoset = SubResource("Resource_hxbnm")
+prototype_id = "Gold"
+properties = {
+"grid_position": Vector2i(0, 1)
+}
+
+[node name="Diamond" type="Node" parent="Player/InventoryGridStacked"]
+script = ExtResource("6_y2y1c")
+protoset = SubResource("Resource_hxbnm")
+prototype_id = "Diamond"
+properties = {
+"grid_position": Vector2i(0, 2)
+}
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(463, 297)
