@@ -21,11 +21,12 @@ config/icon="res://emoji_cold.png"
 
 window/size/viewport_width=1200
 window/size/viewport_height=720
+window/size/mode=3
 window/stretch/aspect="ignore"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/camera_2d_plus/plugin.cfg", "res://addons/gaea/plugin.cfg")
+enabled=PackedStringArray("res://addons/camera_2d_plus/plugin.cfg", "res://addons/gaea/plugin.cfg", "res://addons/gloot/plugin.cfg")
 
 [input]
 
