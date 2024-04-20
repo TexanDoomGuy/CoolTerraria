@@ -1,50 +1,39 @@
-[gd_scene load_steps=23 format=3 uid="uid://cgtpv0u1s0qv2"]
+[gd_scene load_steps=26 format=3 uid="uid://cgtpv0u1s0qv2"]
 
 [ext_resource type="PackedScene" uid="uid://dfi4517dq7fr7" path="res://character_body_2d.tscn" id="1_2dsc8"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/heightmap_generator/heightmap_generator_2d.gd" id="1_7xrgd"]
 [ext_resource type="Script" path="res://heightmap/World.gd" id="1_beawy"]
 [ext_resource type="Script" path="res://addons/camera_2d_plus/objects/camera_2d_plus/camera_2d_plus_script.gd" id="2_u5cbn"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="3_3vkyx"]
+[ext_resource type="Script" path="res://addons/gloot/core/item_protoset.gd" id="4_3a56r"]
 [ext_resource type="Script" path="res://heightmap/Iventory.gd" id="4_foywh"]
 [ext_resource type="Resource" uid="uid://d04eeoqrjf5xi" path="res://terraria-like_generation_settings.tres" id="4_n3vqf"]
-[ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="4_va7r4"]
 [ext_resource type="Texture2D" uid="uid://caoyt0ek7fmdq" path="res://heightmap/pixel-platformer-tileset - Kenney.png" id="5_m3hdp"]
 [ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="5_u1niu"]
-[ext_resource type="Script" path="res://addons/gloot/core/item_protoset.gd" id="5_xqv1o"]
-[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid.gd" id="6_eqfqd"]
+[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="6_f215h"]
 [ext_resource type="Texture2D" uid="uid://6gwie8e2kpg2" path="res://heightmap/ores.png" id="6_hdws1"]
-[ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="6_y2y1c"]
 [ext_resource type="TileSet" uid="uid://di17rt0k5m4qe" path="res://tilemap.tres" id="8_nxru1"]
 [ext_resource type="Texture2D" uid="uid://bh0xh4ju2jygg" path="res://place the holder.png" id="10_wnho1"]
 [ext_resource type="Script" path="res://heightmap/Grass.gd" id="11_cww4k"]
 
-[sub_resource type="Resource" id="Resource_hxbnm"]
-script = ExtResource("5_xqv1o")
+[sub_resource type="Resource" id="Resource_e14lt"]
+script = ExtResource("4_3a56r")
 json_data = "[
     {
-        \"height\": \"1\",
         \"id\": \"Wood\",
         \"image\": \"res://wood.png\",
-		\"stack_size\": 0,
-        \"name\": \"Wood\",
-        \"width\": \"1\"
-    },
-    {
-        \"height\": \"1\",
-		\"stack_size\": 10,
-        \"image\": \"res://gold.png\",
-        \"id\": \"Gold\",
-        \"name\": \"Gold\",
-        \"width\": \"1\"
-    },
-    {
-        \"height\": \"1\",
-        \"image\": \"res://diamond.png\",
-		\"stack_size\": 10,
-        \"id\": \"Diamond\",
-        \"name\": \"Diamond\",
-        \"width\": \"1\"
+        \"max_stack_size\": \"100\",
+		\"stack_size\": \"1\"
     }
 ]"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1a1tm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_viisi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_scg6c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fob85"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5d3k"]
 texture = ExtResource("10_wnho1")
@@ -295,7 +284,12 @@ offset_right = -267.0
 offset_bottom = -329.0
 color = Color(0, 0, 1, 0.14902)
 
-[node name="CtrlInventoryGrid" type="Control" parent="Camera"]
+[node name="InventoryGridStacked" type="Node" parent="Camera"]
+script = ExtResource("3_3vkyx")
+size = Vector2i(10, 1)
+item_protoset = SubResource("Resource_e14lt")
+
+[node name="CtrlInventoryGridEx" type="Control" parent="Camera"]
 custom_minimum_size = Vector2(320, 32)
 layout_mode = 3
 anchors_preset = 0
@@ -303,24 +297,12 @@ offset_left = -587.0
 offset_top = -361.0
 offset_right = -267.0
 offset_bottom = -329.0
-script = ExtResource("6_eqfqd")
+script = ExtResource("6_f215h")
 inventory_path = NodePath("../InventoryGridStacked")
-
-[node name="InventoryGridStacked" type="Control" parent="Camera"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 883.0
-offset_top = -3214.0
-offset_right = 883.0
-offset_bottom = -3214.0
-script = ExtResource("4_va7r4")
-size = Vector2i(10, 1)
-item_protoset = SubResource("Resource_hxbnm")
-
-[node name="_Node_77929" type="Node" parent="Camera/InventoryGridStacked"]
-script = ExtResource("6_y2y1c")
-protoset = SubResource("Resource_hxbnm")
-prototype_id = "Wood"
+field_style = SubResource("StyleBoxTexture_1a1tm")
+field_highlighted_style = SubResource("StyleBoxTexture_viisi")
+field_selected_style = SubResource("StyleBoxTexture_scg6c")
+selection_style = SubResource("StyleBoxTexture_fob85")
 
 [node name="Player" parent="." instance=ExtResource("1_2dsc8")]
 position = Vector2(1194, -2905)
