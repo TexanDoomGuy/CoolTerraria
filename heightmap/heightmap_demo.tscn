@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cgtpv0u1s0qv2"]
+[gd_scene load_steps=23 format=3 uid="uid://cgtpv0u1s0qv2"]
 
 [ext_resource type="PackedScene" uid="uid://dfi4517dq7fr7" path="res://character_body_2d.tscn" id="1_2dsc8"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/heightmap_generator/heightmap_generator_2d.gd" id="1_7xrgd"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://caoyt0ek7fmdq" path="res://heightmap/pixel-platformer-tileset - Kenney.png" id="5_m3hdp"]
 [ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="5_u1niu"]
 [ext_resource type="Script" path="res://addons/gloot/core/item_protoset.gd" id="5_xqv1o"]
+[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid.gd" id="6_eqfqd"]
 [ext_resource type="Texture2D" uid="uid://6gwie8e2kpg2" path="res://heightmap/ores.png" id="6_hdws1"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="6_y2y1c"]
 [ext_resource type="TileSet" uid="uid://di17rt0k5m4qe" path="res://tilemap.tres" id="8_nxru1"]
@@ -22,22 +23,25 @@ json_data = "[
     {
         \"height\": \"1\",
         \"id\": \"Wood\",
+        \"image\": \"res://wood.png\",
+		\"stack_size\": 0,
         \"name\": \"Wood\",
-        \"stack_size\": \"999\",
         \"width\": \"1\"
     },
     {
         \"height\": \"1\",
+		\"stack_size\": 10,
+        \"image\": \"res://gold.png\",
         \"id\": \"Gold\",
         \"name\": \"Gold\",
-        \"stack_size\": \"999\",
         \"width\": \"1\"
     },
     {
         \"height\": \"1\",
+        \"image\": \"res://diamond.png\",
+		\"stack_size\": 10,
         \"id\": \"Diamond\",
         \"name\": \"Diamond\",
-        \"stack_size\": \"999\",
         \"width\": \"1\"
     }
 ]"
@@ -277,43 +281,52 @@ sources/0 = SubResource("TileSetAtlasSource_68jc8")
 [node name="HeightmapDemo" type="Node2D"]
 script = ExtResource("1_beawy")
 
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(311, 309)
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+script = ExtResource("2_u5cbn")
+NODE_TO_FOLLOW_PATH = NodePath("../Player")
+
+[node name="ColorRect" type="ColorRect" parent="Camera"]
+offset_left = -587.0
+offset_top = -361.0
+offset_right = -267.0
+offset_bottom = -329.0
+color = Color(0, 0, 1, 0.14902)
+
+[node name="CtrlInventoryGrid" type="Control" parent="Camera"]
+custom_minimum_size = Vector2(320, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -587.0
+offset_top = -361.0
+offset_right = -267.0
+offset_bottom = -329.0
+script = ExtResource("6_eqfqd")
+inventory_path = NodePath("../InventoryGridStacked")
+
+[node name="InventoryGridStacked" type="Control" parent="Camera"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 883.0
+offset_top = -3214.0
+offset_right = 883.0
+offset_bottom = -3214.0
+script = ExtResource("4_va7r4")
+size = Vector2i(10, 1)
+item_protoset = SubResource("Resource_hxbnm")
+
+[node name="_Node_77929" type="Node" parent="Camera/InventoryGridStacked"]
+script = ExtResource("6_y2y1c")
+protoset = SubResource("Resource_hxbnm")
+prototype_id = "Wood"
+
 [node name="Player" parent="." instance=ExtResource("1_2dsc8")]
 position = Vector2(1194, -2905)
 
 [node name="Node2D" type="Node2D" parent="Player"]
 script = ExtResource("4_foywh")
-
-[node name="InventoryGridStacked" type="Node" parent="Player"]
-script = ExtResource("4_va7r4")
-item_protoset = SubResource("Resource_hxbnm")
-
-[node name="Wood" type="Node" parent="Player/InventoryGridStacked"]
-script = ExtResource("6_y2y1c")
-protoset = SubResource("Resource_hxbnm")
-prototype_id = "Wood"
-
-[node name="Gold" type="Node" parent="Player/InventoryGridStacked"]
-script = ExtResource("6_y2y1c")
-protoset = SubResource("Resource_hxbnm")
-prototype_id = "Gold"
-properties = {
-"grid_position": Vector2i(0, 1)
-}
-
-[node name="Diamond" type="Node" parent="Player/InventoryGridStacked"]
-script = ExtResource("6_y2y1c")
-protoset = SubResource("Resource_hxbnm")
-prototype_id = "Diamond"
-properties = {
-"grid_position": Vector2i(0, 2)
-}
-
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2(463, 297)
-zoom = Vector2(1.5, 1.5)
-position_smoothing_enabled = true
-script = ExtResource("2_u5cbn")
-NODE_TO_FOLLOW_PATH = NodePath("../Player")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-1, -55)

@@ -6,6 +6,10 @@ extends Node2D
 
 @onready var player = $Player
 
+@onready var inventory_grid_stacked = $Camera/InventoryGridStacked
+
+@onready var wood = $Camera/InventoryGridStacked/_Node_77929
+
 var grass = Vector2i(2,1)
 var grass2 = Vector2i(1,0)
 var dirt = Vector2i(2,2)
@@ -44,7 +48,9 @@ func _ready():
 		create_block(coolgrass[i]+Vector2i(0,1),dirt)		
 
 func _input(event):
-	if Input.is_action_just_pressed("click"):		
+	if Input.is_action_pressed("ui_up"):
+		pass
+	if Input.is_action_just_pressed("click"):
 		var tile_pos = tile_map.local_to_map(get_global_mouse_position())
 		var tile_pos2 = tile_map2.local_to_map(get_global_mouse_position())
 		
