@@ -48,7 +48,8 @@ func _ready():
 func _input(event):
 	if Input.is_action_pressed("ui_up"):
 			inventory.create_and_add_item_at("Wood",Vector2i(0,0))
-			#inventory.add_item_at("Wood",Vector2i(0,0))
+	if Input.is_action_pressed("ui_down"):
+			inventory.add_item_at("Wood",Vector2i(0,0))
 	if Input.is_action_just_pressed("click"):
 		var tile_pos = tile_map.local_to_map(get_global_mouse_position())
 		var tile_pos2 = tile_map2.local_to_map(get_global_mouse_position())
