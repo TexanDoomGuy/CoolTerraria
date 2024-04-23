@@ -5,7 +5,6 @@ class_name InventoryGridStacked
 
 const StacksConstraint = preload("res://addons/gloot/core/constraints/stacks_constraint.gd")
 
-
 func _init() -> void:
 	super._init()
 	_constraint_manager.enable_stacks_constraint()

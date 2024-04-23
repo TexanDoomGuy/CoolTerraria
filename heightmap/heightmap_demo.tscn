@@ -1,11 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://cgtpv0u1s0qv2"]
+[gd_scene load_steps=21 format=3 uid="uid://cgtpv0u1s0qv2"]
 
 [ext_resource type="PackedScene" uid="uid://dfi4517dq7fr7" path="res://character_body_2d.tscn" id="1_2dsc8"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/heightmap_generator/heightmap_generator_2d.gd" id="1_7xrgd"]
 [ext_resource type="Script" path="res://heightmap/World.gd" id="1_beawy"]
 [ext_resource type="Script" path="res://addons/camera_2d_plus/objects/camera_2d_plus/camera_2d_plus_script.gd" id="2_u5cbn"]
+[ext_resource type="Resource" uid="uid://tqj3xljssuoy" path="res://heightmap/aaaa.tres" id="2_u07hb"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_grid_stacked.gd" id="3_3vkyx"]
-[ext_resource type="Script" path="res://addons/gloot/core/item_protoset.gd" id="4_3a56r"]
 [ext_resource type="Script" path="res://heightmap/Iventory.gd" id="4_foywh"]
 [ext_resource type="Resource" uid="uid://d04eeoqrjf5xi" path="res://terraria-like_generation_settings.tres" id="4_n3vqf"]
 [ext_resource type="Texture2D" uid="uid://caoyt0ek7fmdq" path="res://heightmap/pixel-platformer-tileset - Kenney.png" id="5_m3hdp"]
@@ -15,25 +15,6 @@
 [ext_resource type="TileSet" uid="uid://di17rt0k5m4qe" path="res://tilemap.tres" id="8_nxru1"]
 [ext_resource type="Texture2D" uid="uid://bh0xh4ju2jygg" path="res://place the holder.png" id="10_wnho1"]
 [ext_resource type="Script" path="res://heightmap/Grass.gd" id="11_cww4k"]
-
-[sub_resource type="Resource" id="Resource_e14lt"]
-script = ExtResource("4_3a56r")
-json_data = "[
-    {
-        \"id\": \"Wood\",
-        \"image\": \"res://wood.png\",
-        \"max_stack_size\": \"100\",
-		\"stack_size\": \"1\"
-    }
-]"
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1a1tm"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_viisi"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_scg6c"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fob85"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5d3k"]
 texture = ExtResource("10_wnho1")
@@ -269,6 +250,7 @@ sources/0 = SubResource("TileSetAtlasSource_68jc8")
 
 [node name="HeightmapDemo" type="Node2D"]
 script = ExtResource("1_beawy")
+item_protoset = ExtResource("2_u07hb")
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(311, 309)
@@ -286,23 +268,20 @@ color = Color(0, 0, 1, 0.14902)
 
 [node name="InventoryGridStacked" type="Node" parent="Camera"]
 script = ExtResource("3_3vkyx")
-size = Vector2i(10, 1)
-item_protoset = SubResource("Resource_e14lt")
+size = Vector2i(16, 1)
+item_protoset = ExtResource("2_u07hb")
 
 [node name="CtrlInventoryGridEx" type="Control" parent="Camera"]
-custom_minimum_size = Vector2(320, 32)
+custom_minimum_size = Vector2(512, 32)
 layout_mode = 3
 anchors_preset = 0
 offset_left = -587.0
 offset_top = -361.0
-offset_right = -267.0
+offset_right = -75.0
 offset_bottom = -329.0
 script = ExtResource("6_f215h")
 inventory_path = NodePath("../InventoryGridStacked")
-field_style = SubResource("StyleBoxTexture_1a1tm")
-field_highlighted_style = SubResource("StyleBoxTexture_viisi")
-field_selected_style = SubResource("StyleBoxTexture_scg6c")
-selection_style = SubResource("StyleBoxTexture_fob85")
+stretch_item_sprites = false
 
 [node name="Player" parent="." instance=ExtResource("1_2dsc8")]
 position = Vector2(1194, -2905)

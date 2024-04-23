@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var item_protoset: ItemProtoset
+
 @onready var tile_map = $Node/TileMap
 
 @onready var tile_map2 = $TileMap
@@ -7,6 +9,9 @@ extends Node2D
 @onready var player = $Player
 
 @onready var inventory = $Camera/InventoryGridStacked
+
+@onready var wood = $Camera/InventoryGridStacked/InventoryItem
+
 
 var grass = Vector2i(2,1)
 var grass2 = Vector2i(1,0)
@@ -39,6 +44,8 @@ func _ready():
 	var coolgrass = tile_map.get_used_cells_by_id(0, 0, grass)
 	print(coolgrass)
 	
+	item_protoset.get_prototype_property("Wood","max_stack")
+	
 	for i in range(randf_range(4,9)):
 		placetree(Vector2i(coolgrass.pick_random()))
 		#print(Vector2i(coolgrass.pick_random()))
@@ -47,9 +54,9 @@ func _ready():
 
 func _input(event):
 	if Input.is_action_pressed("ui_up"):
-			inventory.create_and_add_item_at("Wood",Vector2i(0,0))
+		inventory.create_and_add_item_at("Wood",Vector2i(0,0))
 	if Input.is_action_pressed("ui_down"):
-			inventory.add_item_at("Wood",Vector2i(0,0))
+		inventory.add_item_automerge(wood)
 	if Input.is_action_just_pressed("click"):
 		var tile_pos = tile_map.local_to_map(get_global_mouse_position())
 		var tile_pos2 = tile_map2.local_to_map(get_global_mouse_position())

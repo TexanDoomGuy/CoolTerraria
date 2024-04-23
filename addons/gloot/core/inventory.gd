@@ -123,7 +123,6 @@ func _disconnect_item_signals(item:InventoryItem) -> void:
 	if item.properties_changed.is_connected(_emit_item_modified):
 		item.properties_changed.disconnect(_emit_item_modified)
 
-
 func _emit_item_modified(item: InventoryItem) -> void:
 	_constraint_manager._on_item_modified(item)
 	item_modified.emit(item)
