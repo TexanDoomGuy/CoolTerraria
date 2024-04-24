@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cgtpv0u1s0qv2"]
+[gd_scene load_steps=22 format=3 uid="uid://cgtpv0u1s0qv2"]
 
 [ext_resource type="PackedScene" uid="uid://dfi4517dq7fr7" path="res://character_body_2d.tscn" id="1_2dsc8"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/heightmap_generator/heightmap_generator_2d.gd" id="1_7xrgd"]
@@ -10,11 +10,12 @@
 [ext_resource type="Resource" uid="uid://d04eeoqrjf5xi" path="res://terraria-like_generation_settings.tres" id="4_n3vqf"]
 [ext_resource type="Texture2D" uid="uid://caoyt0ek7fmdq" path="res://heightmap/pixel-platformer-tileset - Kenney.png" id="5_m3hdp"]
 [ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="5_u1niu"]
-[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="6_f215h"]
+[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid.gd" id="6_aldy5"]
 [ext_resource type="Texture2D" uid="uid://6gwie8e2kpg2" path="res://heightmap/ores.png" id="6_hdws1"]
 [ext_resource type="TileSet" uid="uid://di17rt0k5m4qe" path="res://tilemap.tres" id="8_nxru1"]
 [ext_resource type="Texture2D" uid="uid://bh0xh4ju2jygg" path="res://place the holder.png" id="10_wnho1"]
 [ext_resource type="Script" path="res://heightmap/Grass.gd" id="11_cww4k"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="16_ul1g2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5d3k"]
 texture = ExtResource("10_wnho1")
@@ -248,9 +249,10 @@ terrain_set_0/terrain_1/color = Color(0.054902, 0.462745, 0.733333, 1)
 sources/1 = SubResource("TileSetAtlasSource_ebrnv")
 sources/0 = SubResource("TileSetAtlasSource_68jc8")
 
-[node name="HeightmapDemo" type="Node2D"]
+[node name="HeightmapDemo" type="Node2D" node_paths=PackedStringArray("wood")]
 script = ExtResource("1_beawy")
 item_protoset = ExtResource("2_u07hb")
+wood = NodePath("Camera/InventoryGridStacked/wood")
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(311, 309)
@@ -259,29 +261,207 @@ position_smoothing_enabled = true
 script = ExtResource("2_u5cbn")
 NODE_TO_FOLLOW_PATH = NodePath("../Player")
 
-[node name="ColorRect" type="ColorRect" parent="Camera"]
-offset_left = -587.0
-offset_top = -361.0
-offset_right = -267.0
-offset_bottom = -329.0
-color = Color(0, 0, 1, 0.14902)
-
 [node name="InventoryGridStacked" type="Node" parent="Camera"]
 script = ExtResource("3_3vkyx")
-size = Vector2i(16, 1)
+size = Vector2i(10, 1)
 item_protoset = ExtResource("2_u07hb")
 
-[node name="CtrlInventoryGridEx" type="Control" parent="Camera"]
-custom_minimum_size = Vector2(512, 32)
+[node name="wood" type="Node" parent="Camera/InventoryGridStacked"]
+script = ExtResource("16_ul1g2")
+protoset = ExtResource("2_u07hb")
+prototype_id = "Wood"
+
+[node name="Node" type="Node2D" parent="Camera"]
+position = Vector2(-311, -309)
+
+[node name="Node2D" type="Node2D" parent="Camera/Node"]
+
+[node name="background2" type="ColorRect" parent="Camera/Node/Node2D"]
+offset_left = -276.0
+offset_top = -52.0
+offset_right = -244.0
+offset_bottom = -20.0
+color = Color(0.122844, 0.259625, 0.401925, 1)
+
+[node name="background3" type="ColorRect" parent="Camera/Node/Node2D"]
+offset_left = -274.0
+offset_top = -50.0
+offset_right = -246.0
+offset_bottom = -22.0
+color = Color(0.262745, 0.47451, 0.698039, 0.356863)
+
+[node name="Node2D2" type="Node2D" parent="Camera/Node"]
+position = Vector2(32, 0)
+
+[node name="background2" type="ColorRect" parent="Camera/Node/Node2D2"]
+offset_left = -276.0
+offset_top = -52.0
+offset_right = -244.0
+offset_bottom = -20.0
+color = Color(0.122844, 0.259625, 0.401925, 1)
+
+[node name="background3" type="ColorRect" parent="Camera/Node/Node2D2"]
+offset_left = -274.0
+offset_top = -50.0
+offset_right = -246.0
+offset_bottom = -22.0
+color = Color(0.262745, 0.47451, 0.698039, 0.356863)
+
+[node name="Node2D3" type="Node2D" parent="Camera/Node"]
+position = Vector2(64, 0)
+
+[node name="background2" type="ColorRect" parent="Camera/Node/Node2D3"]
+offset_left = -276.0
+offset_top = -52.0
+offset_right = -244.0
+offset_bottom = -20.0
+color = Color(0.122844, 0.259625, 0.401925, 1)
+
+[node name="background3" type="ColorRect" parent="Camera/Node/Node2D3"]
+offset_left = -274.0
+offset_top = -50.0
+offset_right = -246.0
+offset_bottom = -22.0
+color = Color(0.262745, 0.47451, 0.698039, 0.356863)
+
+[node name="Node2D4" type="Node2D" parent="Camera/Node"]
+position = Vector2(96, 0)
+
+[node name="background2" type="ColorRect" parent="Camera/Node/Node2D4"]
+offset_left = -276.0
+offset_top = -52.0
+offset_right = -244.0
+offset_bottom = -20.0
+color = Color(0.122844, 0.259625, 0.401925, 1)
+
+[node name="background3" type="ColorRect" parent="Camera/Node/Node2D4"]
+offset_left = -274.0
+offset_top = -50.0
+offset_right = -246.0
+offset_bottom = -22.0
+color = Color(0.262745, 0.47451, 0.698039, 0.356863)
+
+[node name="Node2D5" type="Node2D" parent="Camera/Node"]
+position = Vector2(128, 0)
+
+[node name="background2" type="ColorRect" parent="Camera/Node/Node2D5"]
+offset_left = -276.0
+offset_top = -52.0
+offset_right = -244.0
+offset_bottom = -20.0
+color = Color(0.122844, 0.259625, 0.401925, 1)
+
+[node name="background3" type="ColorRect" parent="Camera/Node/Node2D5"]
+offset_left = -274.0
+offset_top = -50.0
+offset_right = -246.0
+offset_bottom = -22.0
+color = Color(0.262745, 0.47451, 0.698039, 0.356863)
+
+[node name="Node2D6" type="Node2D" parent="Camera/Node"]
+position = Vector2(160, 0)
+
+[node name="background2" type="ColorRect" parent="Camera/Node/Node2D6"]
+offset_left = -276.0
+offset_top = -52.0
+offset_right = -244.0
+offset_bottom = -20.0
+color = Color(0.122844, 0.259625, 0.401925, 1)
+
+[node name="background3" type="ColorRect" parent="Camera/Node/Node2D6"]
+offset_left = -274.0
+offset_top = -50.0
+offset_right = -246.0
+offset_bottom = -22.0
+color = Color(0.262745, 0.47451, 0.698039, 0.356863)
+
+[node name="Node2D7" type="Node2D" parent="Camera/Node"]
+position = Vector2(192, 0)
+
+[node name="background2" type="ColorRect" parent="Camera/Node/Node2D7"]
+offset_left = -276.0
+offset_top = -52.0
+offset_right = -244.0
+offset_bottom = -20.0
+color = Color(0.122844, 0.259625, 0.401925, 1)
+
+[node name="background3" type="ColorRect" parent="Camera/Node/Node2D7"]
+offset_left = -274.0
+offset_top = -50.0
+offset_right = -246.0
+offset_bottom = -22.0
+color = Color(0.262745, 0.47451, 0.698039, 0.356863)
+
+[node name="Node2D8" type="Node2D" parent="Camera/Node"]
+position = Vector2(224, 0)
+
+[node name="background2" type="ColorRect" parent="Camera/Node/Node2D8"]
+offset_left = -276.0
+offset_top = -52.0
+offset_right = -244.0
+offset_bottom = -20.0
+color = Color(0.122844, 0.259625, 0.401925, 1)
+
+[node name="background3" type="ColorRect" parent="Camera/Node/Node2D8"]
+offset_left = -274.0
+offset_top = -50.0
+offset_right = -246.0
+offset_bottom = -22.0
+color = Color(0.262745, 0.47451, 0.698039, 0.356863)
+
+[node name="Node2D9" type="Node2D" parent="Camera/Node"]
+position = Vector2(256, 0)
+
+[node name="background2" type="ColorRect" parent="Camera/Node/Node2D9"]
+offset_left = -276.0
+offset_top = -52.0
+offset_right = -244.0
+offset_bottom = -20.0
+color = Color(0.122844, 0.259625, 0.401925, 1)
+
+[node name="background3" type="ColorRect" parent="Camera/Node/Node2D9"]
+offset_left = -274.0
+offset_top = -50.0
+offset_right = -246.0
+offset_bottom = -22.0
+color = Color(0.262745, 0.47451, 0.698039, 0.356863)
+
+[node name="Node2D10" type="Node2D" parent="Camera/Node"]
+position = Vector2(288, 0)
+
+[node name="background2" type="ColorRect" parent="Camera/Node/Node2D10"]
+offset_left = -276.0
+offset_top = -52.0
+offset_right = -244.0
+offset_bottom = -20.0
+color = Color(0.122844, 0.259625, 0.401925, 1)
+
+[node name="background3" type="ColorRect" parent="Camera/Node/Node2D10"]
+offset_left = -274.0
+offset_top = -50.0
+offset_right = -246.0
+offset_bottom = -22.0
+color = Color(0.262745, 0.47451, 0.698039, 0.356863)
+
+[node name="background" type="ColorRect" parent="Camera"]
+offset_left = -585.0
+offset_top = -359.0
+offset_right = -557.0
+offset_bottom = -331.0
+color = Color(0.395322, 0.182612, 0.622021, 0.301961)
+
+[node name="CtrlInventoryGrid" type="Control" parent="Camera"]
+texture_filter = 1
+custom_minimum_size = Vector2(320, 32)
 layout_mode = 3
 anchors_preset = 0
 offset_left = -587.0
 offset_top = -361.0
-offset_right = -75.0
+offset_right = -267.0
 offset_bottom = -329.0
-script = ExtResource("6_f215h")
+script = ExtResource("6_aldy5")
 inventory_path = NodePath("../InventoryGridStacked")
-stretch_item_sprites = false
+draw_selections = true
 
 [node name="Player" parent="." instance=ExtResource("1_2dsc8")]
 position = Vector2(1194, -2905)
@@ -330,3 +510,5 @@ offset_top = -2428.0
 offset_right = 2303.0
 offset_bottom = 561.0
 color = Color(0.172549, 0.188235, 0.243137, 1)
+
+[connection signal="removed_from_inventory" from="Camera/InventoryGridStacked/wood" to="." method="_on_wood_removed_from_inventory"]
