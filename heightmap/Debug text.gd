@@ -13,8 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	player_x.text = str(player.position.x)
-	player_y.text = str(player.position.y)
-	wood_removed.text = str(world.wood_removed)
-	aaa.text = str(world.inventory.get_item_position(world.dirt))
+	player_x.text = "Player.y = "+str(player.position.x)
+	player_y.text = "Player.x = "+str(player.position.y)
+	aaa.text = "FPS = "+str(Engine.get_frames_per_second())
 
