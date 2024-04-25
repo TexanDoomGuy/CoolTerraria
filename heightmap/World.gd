@@ -27,6 +27,7 @@ var grass = Vector2i(2,1)
 var grass2 = Vector2i(1,0)
 var dirt_block = Vector2i(2,2)
 var wood_removed = 0
+var dirt_removed = 0
 var item_selected = Vector2i(0,0)
 var wood_plank = Vector2i(0,0)
 var wood_plank_ph = Vector2i(1,0)
@@ -66,6 +67,15 @@ func add_item(item):
 		else:
 			inventory.add_item(wood)
 			wood_removed = 0
+	if item == dirt:
+		if dirt_removed == 0:
+			var dirt_stack = inventory.get_item_stack_size(dirt)
+			#print(wood)
+			#print(wood_stack)
+			inventory.set_item_stack_size(dirt, dirt_stack+1)
+		else:
+			inventory.add_item(dirt)
+			dirt_removed = 0
 func remove_item(item):
 	if item == wood:
 		var wood_stack = inventory.get_item_stack_size(wood)
@@ -76,6 +86,16 @@ func remove_item(item):
 			#print(wood_stack)
 			#item_protoset.set_prototype_property("Wood","stack_size", wood_stack+1)
 			inventory.set_item_stack_size(wood, wood_stack-1)
+	elif item == dirt:
+		var dirt_stack = inventory.get_item_stack_size(dirt)
+		if dirt_stack == 1:
+			inventory.remove_item(dirt)
+			dirt_removed = 1
+		else:
+			#print(wood_stack)
+			#item_protoset.set_prototype_property("Wood","stack_size", wood_stack+1)
+			inventory.set_item_stack_size(dirt, dirt_stack-1)
+	
 
 func hide0_wood():
 	if inventory.get_item_stack_size(wood) == 0:
@@ -88,6 +108,34 @@ func hide0_dirt():
 		dirt.set_property("image", null)
 	else:
 		dirt.set_property("image","res://dirt.png")
+
+func select_item():
+	for i in range(11):
+		print(i)
+		if item_select.position.x == -585 + (32*(i-1)):
+			item_selected = Vector2i(i-1,0)
+
+		if inventory.get_item_position(wood) == item_selected:
+			placed_item = "Wood"
+			if wood_removed == 1:
+				placed_item = "null"					
+		elif inventory.get_item_position(dirt) == item_selected:
+			placed_item = "Dirt"
+			placed_item = "null"
+	return(placed_item)
+
+func select_item_ns():
+	for i in range(11):
+		print(i)
+		if item_select.position.x == -585 + (32*(i-1)):
+			item_selected = Vector2i(i-1,0)
+
+		if inventory.get_item_position(wood) == item_selected:
+			placed_item = wood
+		elif inventory.get_item_position(dirt) == item_selected:
+			placed_item = dirt
+	return(placed_item)
+
 
 func _process(delta):
 	hide0_wood()
@@ -103,27 +151,29 @@ func _ready():
 	#inventory.create_and_add_item("Dirt")
 func _input(event):
 	if Input.is_action_pressed("ui_up"):
-		add_item(wood)
+		add_item(select_item_ns())
 	if Input.is_action_pressed("ui_down"):
-		remove_item(wood)
+		remove_item(select_item_ns())
 	if Input.is_action_pressed("1"):
-		#print(inventory.get_item_at(Vector2i(0,0)))
-		if inventory.get_item_at(Vector2i(0,0)) != null:
-			item_select.position.x = -585			
-			#_ctrl_inventory_grid_basic.select_inventory_item(inventory.get_item_at(Vector2i(0,0)))
+		item_select.position.x = -585
 	if Input.is_action_pressed("2"):
-		#print(inventory.get_item_at(Vector2i(1,0)))
-		if inventory.get_item_at(Vector2i(1,0)) != null:
-			item_select.position.x = -553
-			if inventory.get_item_at(Vector2i(2,0)): 
-				pass
-			#_ctrl_inventory_grid_basic.select_inventory_item(inventory.get_item_at(Vector2i(1,0)))
+		item_select.position.x = -585 + (32*1)
 	if Input.is_action_pressed("3"):
-		#print(inventory.get_item_at(Vector2i(2,0)))
-		if inventory.get_item_at(Vector2i(2,0)) != null:
-			item_select.position.x = -521
-			#_ctrl_inventory_grid_basic.select_inventory_item(inventory.get_item_at(Vector2i(2,0)))
-		
+		item_select.position.x = -585 + (32*2)
+	if Input.is_action_pressed("4"):
+		item_select.position.x = -585 + (32*3)
+	if Input.is_action_pressed("5"):
+		item_select.position.x = -585 + (32*4)
+	if Input.is_action_pressed("6"):
+		item_select.position.x = -585 + (32*5)
+	if Input.is_action_pressed("7"):
+		item_select.position.x = -585 + (32*6)
+	if Input.is_action_pressed("8"):
+		item_select.position.x = -585 + (32*7)
+	if Input.is_action_pressed("9"):
+		item_select.position.x = -585 + (32*8)
+	if Input.is_action_pressed("0"):
+		item_select.position.x = -585 + (32*9)
 		
 	if Input.is_action_pressed("click"):
 		var tile_pos = tile_map.local_to_map(get_global_mouse_position())
@@ -131,21 +181,8 @@ func _input(event):
 		
 		#print(tile_map.get_cell_atlas_coords(0,tile_pos))
 		#print(tile_pos)
-		for i in range(11):	
-			if item_select.position.x == -585 + (32*(i-1)):
-				item_selected = Vector2i(i-1,0)
-				print("i = "+str(i))
-				print("item_selected = "+str(item_selected))
-				print("get_item_position(wood) = "+str(inventory.get_item_position(wood)))
-				print("get_item_position(dirt) = "+str(inventory.get_item_position(dirt)))			
-		
-			if inventory.get_item_position(wood) == item_selected:
-				placed_item = "Wood"
-			elif inventory.get_item_position(dirt) == item_selected:
-				placed_item = "Dirt"
-			else:
-				placed_item = "null"
-			print("placed_item = "+str(placed_item))
+		select_item()
+			#print("placed_item = "+str(placed_item))
 		if can_place == 1:	
 			if placed_item == "Dirt":
 				
@@ -167,7 +204,6 @@ func _input(event):
 						
 			if placed_item == "Wood":
 				if tile_map.get_cell_atlas_coords(0,tile_pos) != Vector2i(-1,-1):
-					print("aaaa")
 					create_block(tile_pos,wood_plank_ph, blocks)	
 				elif tile_map.get_cell_atlas_coords(0,Vector2i(tile_pos.x,tile_pos.y+1)) != Vector2i(-1,-1):
 					create_block(tile_pos,wood_plank_ph, blocks)
