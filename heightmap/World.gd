@@ -21,6 +21,8 @@ const CtrlInventoryGridBasic = preload("res://addons/gloot/ui/ctrl_inventory_gri
 
 @onready var blocks = $Blocks
 
+@onready var sprite_2d = $Sprite2D
+
 var can_place = 1
 
 var grass = Vector2i(2,1)
@@ -140,6 +142,8 @@ func select_item_ns():
 func _process(delta):
 	hide0_wood()
 	hide0_dirt()
+	sprite_2d.position = tile_map.map_to_local(tile_map.local_to_map(player.position))
+	
 func _ready():
 	var coolgrass = tile_map.get_used_cells_by_id(0, 0, grass)
 	#print(coolgrass)
