@@ -15,7 +15,7 @@ const CtrlInventoryGridBasic = preload("res://addons/gloot/ui/ctrl_inventory_gri
 
 @onready var inventory = $Camera/InventoryGridStacked
 
-@onready var ctrl_inventory = $Camera/CtrlInventoryGrid
+@onready var ctrl_inventory = $Camera/Node2D/CtrlInventoryGrid
 
 @onready var item_select = $Camera/Node2D/background
 
@@ -77,17 +77,21 @@ func remove_item(item):
 			#item_protoset.set_prototype_property("Wood","stack_size", wood_stack+1)
 			inventory.set_item_stack_size(wood, wood_stack-1)
 
-func hide0(item):
-	if inventory.get_item_stack_size(item) == 0:
-		item.set_property("image", null)
+func hide0_wood():
+	if inventory.get_item_stack_size(wood) == 0:
+		wood.set_property("image", null)
 	else:
-		item.set_property("image","res://"+str(item)+".png")
-	
+		wood.set_property("image","res://wood.png")
 
+func hide0_dirt():
+	if inventory.get_item_stack_size(dirt) == 0:
+		dirt.set_property("image", null)
+	else:
+		dirt.set_property("image","res://dirt.png")
 
 func _process(delta):
-	hide0(wood)
-	hide0(dirt)
+	hide0_wood()
+	hide0_dirt()
 func _ready():
 	var coolgrass = tile_map.get_used_cells_by_id(0, 0, grass)
 	#print(coolgrass)
@@ -97,7 +101,6 @@ func _ready():
 	for i in range(coolgrass.size()):
 		create_block(coolgrass[i]+Vector2i(0,1),dirt_block,tile_map)		
 	inventory.create_and_add_item("Dirt")
-
 func _input(event):
 	if Input.is_action_pressed("ui_up"):
 		add_item(wood)
