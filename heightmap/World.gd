@@ -100,7 +100,7 @@ func _ready():
 		#print(Vector2i(coolgrass.pick_random()))
 	for i in range(coolgrass.size()):
 		create_block(coolgrass[i]+Vector2i(0,1),dirt_block,tile_map)		
-	inventory.create_and_add_item("Dirt")
+	#inventory.create_and_add_item("Dirt")
 func _input(event):
 	if Input.is_action_pressed("ui_up"):
 		add_item(wood)
@@ -133,15 +133,21 @@ func _input(event):
 		#print(tile_pos)
 		for i in range(11):	
 			if item_select.position.x == -585 + (32*(i-1)):
-				item_selected = Vector2i(i,0)
+				item_selected = Vector2i(i-1,0)
 				print("i = "+str(i))
 				print("item_selected = "+str(item_selected))
+				print("get_item_position(wood) = "+str(inventory.get_item_position(wood)))
+				print("get_item_position(dirt) = "+str(inventory.get_item_position(dirt)))			
 		
 			if inventory.get_item_position(wood) == item_selected:
 				placed_item = "Wood"
+			elif inventory.get_item_position(dirt) == item_selected:
+				placed_item = "Dirt"
+			else:
+				placed_item = "null"
 			print("placed_item = "+str(placed_item))
 		if can_place == 1:	
-			if placed_item == "dirt_block":
+			if placed_item == "Dirt":
 				
 				if blocks.get_cell_atlas_coords(0,tile_pos) != Vector2i(-1,-1):
 					create_block(tile_pos,wood_plank_ph, tile_map)		

@@ -359,10 +359,11 @@ tile_size = Vector2i(18, 18)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_qhr5e")
 
-[node name="HeightmapDemo" type="Node2D" node_paths=PackedStringArray("wood")]
+[node name="HeightmapDemo" type="Node2D" node_paths=PackedStringArray("wood", "dirt")]
 script = ExtResource("1_beawy")
 item_protoset = ExtResource("2_u07hb")
 wood = NodePath("Camera/InventoryGridStacked/wood")
+dirt = NodePath("Camera/InventoryGridStacked/Dirt")
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(311, 309)
@@ -381,10 +382,10 @@ script = ExtResource("16_ul1g2")
 protoset = ExtResource("2_u07hb")
 prototype_id = "Wood"
 
-[node name="InventoryItem" type="Node" parent="Camera/InventoryGridStacked"]
+[node name="Dirt" type="Node" parent="Camera/InventoryGridStacked"]
 script = ExtResource("16_ul1g2")
 protoset = ExtResource("2_u07hb")
-prototype_id = "Wood"
+prototype_id = "dirt"
 properties = {
 "grid_position": Vector2i(1, 0)
 }
