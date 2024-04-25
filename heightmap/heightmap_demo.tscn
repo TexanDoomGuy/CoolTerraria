@@ -404,7 +404,6 @@ layer_1/tile_data = PackedInt32Array()
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(311, 309)
 zoom = Vector2(1.5, 1.5)
-position_smoothing_enabled = true
 script = ExtResource("2_u5cbn")
 NODE_TO_FOLLOW_PATH = NodePath("../Player")
 

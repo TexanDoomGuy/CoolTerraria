@@ -13,6 +13,7 @@ config_version=5
 config/name="Cool Terreria"
 run/main_scene="res://heightmap/heightmap_demo.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://emoji_cold.png"
 config/icon="res://emoji_cold.png"
@@ -26,7 +27,7 @@ window/stretch/aspect="ignore"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/camera_2d_plus/plugin.cfg", "res://addons/copilot/plugin.cfg", "res://addons/gaea/plugin.cfg", "res://addons/gd-plug-ui/plugin.cfg", "res://addons/gloot/plugin.cfg", "res://addons/plugin_updater/plugin.cfg")
+enabled=PackedStringArray("res://addons/camera_2d_plus/plugin.cfg", "res://addons/gaea/plugin.cfg", "res://addons/gd-plug-ui/plugin.cfg", "res://addons/gloot/plugin.cfg", "res://addons/plugin_updater/plugin.cfg")
 
 [input]
 
