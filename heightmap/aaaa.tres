@@ -5,10 +5,17 @@
 [resource]
 script = ExtResource("1_qkhka")
 json_data = "[
-    {
-        \"id\": \"Wood\",
+	{
+		\"id\": \"Wood\",
         \"image\": \"res://wood.png\",
         \"max_stack_size\": \"100\",
 		\"stack_size\": \"1\"
+	},
+    {
+        \"id\": \"dirt\",
+        \"image\": \"res://dirt.png\",
+        \"max_stack_size\": \"100\",
+		\"stack_size\": \"1\"
     }
+
 ]"

@@ -7,10 +7,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("right"):
 		play("run")
 		flip_h = 0
-	else: if Input.is_action_pressed("ui_left"):
+	else: if Input.is_action_pressed("left"):
 		play("run")
 		flip_h = 1
 	else:

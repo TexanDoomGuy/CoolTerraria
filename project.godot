@@ -26,7 +26,7 @@ window/stretch/aspect="ignore"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/camera_2d_plus/plugin.cfg", "res://addons/copilot/plugin.cfg", "res://addons/gaea/plugin.cfg", "res://addons/gloot/plugin.cfg")
+enabled=PackedStringArray("res://addons/camera_2d_plus/plugin.cfg", "res://addons/copilot/plugin.cfg", "res://addons/gaea/plugin.cfg", "res://addons/gloot/plugin.cfg", "res://addons/plugin_updater/plugin.cfg")
 
 [input]
 

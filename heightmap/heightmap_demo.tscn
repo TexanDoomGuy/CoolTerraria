@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cgtpv0u1s0qv2"]
+[gd_scene load_steps=25 format=3 uid="uid://cgtpv0u1s0qv2"]
 
 [ext_resource type="PackedScene" uid="uid://dfi4517dq7fr7" path="res://character_body_2d.tscn" id="1_2dsc8"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/heightmap_generator/heightmap_generator_2d.gd" id="1_7xrgd"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bh0xh4ju2jygg" path="res://place the holder.png" id="10_wnho1"]
 [ext_resource type="Script" path="res://heightmap/Grass.gd" id="11_cww4k"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="16_ul1g2"]
+[ext_resource type="Texture2D" uid="uid://y73y1ietphv7" path="res://Sprite-0001.png" id="17_iv822"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5d3k"]
 texture = ExtResource("10_wnho1")
@@ -249,6 +250,115 @@ terrain_set_0/terrain_1/color = Color(0.054902, 0.462745, 0.733333, 1)
 sources/1 = SubResource("TileSetAtlasSource_ebrnv")
 sources/0 = SubResource("TileSetAtlasSource_68jc8")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qhr5e"]
+texture = ExtResource("17_iv822")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+4:2/0 = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+4:3/0 = 0
+4:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:3/0/physics_layer_0/angular_velocity = 0.0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+4:4/0 = 0
+4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:4/0/physics_layer_0/angular_velocity = 0.0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+3:4/0 = 0
+3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:4/0/physics_layer_0/angular_velocity = 0.0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+2:4/0 = 0
+2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:4/0/physics_layer_0/angular_velocity = 0.0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+1:4/0 = 0
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+0:4/0 = 0
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+
+[sub_resource type="TileSet" id="TileSet_7f7td"]
+tile_size = Vector2i(18, 18)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_qhr5e")
+
 [node name="HeightmapDemo" type="Node2D" node_paths=PackedStringArray("wood")]
 script = ExtResource("1_beawy")
 item_protoset = ExtResource("2_u07hb")
@@ -271,186 +381,197 @@ script = ExtResource("16_ul1g2")
 protoset = ExtResource("2_u07hb")
 prototype_id = "Wood"
 
-[node name="Node" type="Node2D" parent="Camera"]
+[node name="InventoryItem" type="Node" parent="Camera/InventoryGridStacked"]
+script = ExtResource("16_ul1g2")
+protoset = ExtResource("2_u07hb")
+prototype_id = "Wood"
+properties = {
+"grid_position": Vector2i(1, 0)
+}
+
+[node name="Node2D" type="Node2D" parent="Camera"]
+position = Vector2(133, 121)
+
+[node name="Node" type="Node2D" parent="Camera/Node2D"]
 position = Vector2(-311, -309)
 
-[node name="Node2D" type="Node2D" parent="Camera/Node"]
+[node name="Node2D" type="Node2D" parent="Camera/Node2D/Node"]
 
-[node name="background2" type="ColorRect" parent="Camera/Node/Node2D"]
+[node name="background2" type="ColorRect" parent="Camera/Node2D/Node/Node2D"]
 offset_left = -276.0
 offset_top = -52.0
 offset_right = -244.0
 offset_bottom = -20.0
 color = Color(0.122844, 0.259625, 0.401925, 1)
 
-[node name="background3" type="ColorRect" parent="Camera/Node/Node2D"]
+[node name="background3" type="ColorRect" parent="Camera/Node2D/Node/Node2D"]
 offset_left = -274.0
 offset_top = -50.0
 offset_right = -246.0
 offset_bottom = -22.0
 color = Color(0.262745, 0.47451, 0.698039, 0.356863)
 
-[node name="Node2D2" type="Node2D" parent="Camera/Node"]
+[node name="Node2D2" type="Node2D" parent="Camera/Node2D/Node"]
 position = Vector2(32, 0)
 
-[node name="background2" type="ColorRect" parent="Camera/Node/Node2D2"]
+[node name="background2" type="ColorRect" parent="Camera/Node2D/Node/Node2D2"]
 offset_left = -276.0
 offset_top = -52.0
 offset_right = -244.0
 offset_bottom = -20.0
 color = Color(0.122844, 0.259625, 0.401925, 1)
 
-[node name="background3" type="ColorRect" parent="Camera/Node/Node2D2"]
+[node name="background3" type="ColorRect" parent="Camera/Node2D/Node/Node2D2"]
 offset_left = -274.0
 offset_top = -50.0
 offset_right = -246.0
 offset_bottom = -22.0
 color = Color(0.262745, 0.47451, 0.698039, 0.356863)
 
-[node name="Node2D3" type="Node2D" parent="Camera/Node"]
+[node name="Node2D3" type="Node2D" parent="Camera/Node2D/Node"]
 position = Vector2(64, 0)
 
-[node name="background2" type="ColorRect" parent="Camera/Node/Node2D3"]
+[node name="background2" type="ColorRect" parent="Camera/Node2D/Node/Node2D3"]
 offset_left = -276.0
 offset_top = -52.0
 offset_right = -244.0
 offset_bottom = -20.0
 color = Color(0.122844, 0.259625, 0.401925, 1)
 
-[node name="background3" type="ColorRect" parent="Camera/Node/Node2D3"]
+[node name="background3" type="ColorRect" parent="Camera/Node2D/Node/Node2D3"]
 offset_left = -274.0
 offset_top = -50.0
 offset_right = -246.0
 offset_bottom = -22.0
 color = Color(0.262745, 0.47451, 0.698039, 0.356863)
 
-[node name="Node2D4" type="Node2D" parent="Camera/Node"]
+[node name="Node2D4" type="Node2D" parent="Camera/Node2D/Node"]
 position = Vector2(96, 0)
 
-[node name="background2" type="ColorRect" parent="Camera/Node/Node2D4"]
+[node name="background2" type="ColorRect" parent="Camera/Node2D/Node/Node2D4"]
 offset_left = -276.0
 offset_top = -52.0
 offset_right = -244.0
 offset_bottom = -20.0
 color = Color(0.122844, 0.259625, 0.401925, 1)
 
-[node name="background3" type="ColorRect" parent="Camera/Node/Node2D4"]
+[node name="background3" type="ColorRect" parent="Camera/Node2D/Node/Node2D4"]
 offset_left = -274.0
 offset_top = -50.0
 offset_right = -246.0
 offset_bottom = -22.0
 color = Color(0.262745, 0.47451, 0.698039, 0.356863)
 
-[node name="Node2D5" type="Node2D" parent="Camera/Node"]
+[node name="Node2D5" type="Node2D" parent="Camera/Node2D/Node"]
 position = Vector2(128, 0)
 
-[node name="background2" type="ColorRect" parent="Camera/Node/Node2D5"]
+[node name="background2" type="ColorRect" parent="Camera/Node2D/Node/Node2D5"]
 offset_left = -276.0
 offset_top = -52.0
 offset_right = -244.0
 offset_bottom = -20.0
 color = Color(0.122844, 0.259625, 0.401925, 1)
 
-[node name="background3" type="ColorRect" parent="Camera/Node/Node2D5"]
+[node name="background3" type="ColorRect" parent="Camera/Node2D/Node/Node2D5"]
 offset_left = -274.0
 offset_top = -50.0
 offset_right = -246.0
 offset_bottom = -22.0
 color = Color(0.262745, 0.47451, 0.698039, 0.356863)
 
-[node name="Node2D6" type="Node2D" parent="Camera/Node"]
+[node name="Node2D6" type="Node2D" parent="Camera/Node2D/Node"]
 position = Vector2(160, 0)
 
-[node name="background2" type="ColorRect" parent="Camera/Node/Node2D6"]
+[node name="background2" type="ColorRect" parent="Camera/Node2D/Node/Node2D6"]
 offset_left = -276.0
 offset_top = -52.0
 offset_right = -244.0
 offset_bottom = -20.0
 color = Color(0.122844, 0.259625, 0.401925, 1)
 
-[node name="background3" type="ColorRect" parent="Camera/Node/Node2D6"]
+[node name="background3" type="ColorRect" parent="Camera/Node2D/Node/Node2D6"]
 offset_left = -274.0
 offset_top = -50.0
 offset_right = -246.0
 offset_bottom = -22.0
 color = Color(0.262745, 0.47451, 0.698039, 0.356863)
 
-[node name="Node2D7" type="Node2D" parent="Camera/Node"]
+[node name="Node2D7" type="Node2D" parent="Camera/Node2D/Node"]
 position = Vector2(192, 0)
 
-[node name="background2" type="ColorRect" parent="Camera/Node/Node2D7"]
+[node name="background2" type="ColorRect" parent="Camera/Node2D/Node/Node2D7"]
 offset_left = -276.0
 offset_top = -52.0
 offset_right = -244.0
 offset_bottom = -20.0
 color = Color(0.122844, 0.259625, 0.401925, 1)
 
-[node name="background3" type="ColorRect" parent="Camera/Node/Node2D7"]
+[node name="background3" type="ColorRect" parent="Camera/Node2D/Node/Node2D7"]
 offset_left = -274.0
 offset_top = -50.0
 offset_right = -246.0
 offset_bottom = -22.0
 color = Color(0.262745, 0.47451, 0.698039, 0.356863)
 
-[node name="Node2D8" type="Node2D" parent="Camera/Node"]
+[node name="Node2D8" type="Node2D" parent="Camera/Node2D/Node"]
 position = Vector2(224, 0)
 
-[node name="background2" type="ColorRect" parent="Camera/Node/Node2D8"]
+[node name="background2" type="ColorRect" parent="Camera/Node2D/Node/Node2D8"]
 offset_left = -276.0
 offset_top = -52.0
 offset_right = -244.0
 offset_bottom = -20.0
 color = Color(0.122844, 0.259625, 0.401925, 1)
 
-[node name="background3" type="ColorRect" parent="Camera/Node/Node2D8"]
+[node name="background3" type="ColorRect" parent="Camera/Node2D/Node/Node2D8"]
 offset_left = -274.0
 offset_top = -50.0
 offset_right = -246.0
 offset_bottom = -22.0
 color = Color(0.262745, 0.47451, 0.698039, 0.356863)
 
-[node name="Node2D9" type="Node2D" parent="Camera/Node"]
+[node name="Node2D9" type="Node2D" parent="Camera/Node2D/Node"]
 position = Vector2(256, 0)
 
-[node name="background2" type="ColorRect" parent="Camera/Node/Node2D9"]
+[node name="background2" type="ColorRect" parent="Camera/Node2D/Node/Node2D9"]
 offset_left = -276.0
 offset_top = -52.0
 offset_right = -244.0
 offset_bottom = -20.0
 color = Color(0.122844, 0.259625, 0.401925, 1)
 
-[node name="background3" type="ColorRect" parent="Camera/Node/Node2D9"]
+[node name="background3" type="ColorRect" parent="Camera/Node2D/Node/Node2D9"]
 offset_left = -274.0
 offset_top = -50.0
 offset_right = -246.0
 offset_bottom = -22.0
 color = Color(0.262745, 0.47451, 0.698039, 0.356863)
 
-[node name="Node2D10" type="Node2D" parent="Camera/Node"]
+[node name="Node2D10" type="Node2D" parent="Camera/Node2D/Node"]
 position = Vector2(288, 0)
 
-[node name="background2" type="ColorRect" parent="Camera/Node/Node2D10"]
+[node name="background2" type="ColorRect" parent="Camera/Node2D/Node/Node2D10"]
 offset_left = -276.0
 offset_top = -52.0
 offset_right = -244.0
 offset_bottom = -20.0
 color = Color(0.122844, 0.259625, 0.401925, 1)
 
-[node name="background3" type="ColorRect" parent="Camera/Node/Node2D10"]
+[node name="background3" type="ColorRect" parent="Camera/Node2D/Node/Node2D10"]
 offset_left = -274.0
 offset_top = -50.0
 offset_right = -246.0
 offset_bottom = -22.0
 color = Color(0.262745, 0.47451, 0.698039, 0.356863)
 
-[node name="background" type="ColorRect" parent="Camera"]
+[node name="background" type="ColorRect" parent="Camera/Node2D"]
 offset_left = -585.0
 offset_top = -359.0
 offset_right = -557.0
 offset_bottom = -331.0
 color = Color(0.395322, 0.182612, 0.622021, 0.301961)
 
-[node name="CtrlInventoryGrid" type="Control" parent="Camera"]
+[node name="CtrlInventoryGrid" type="Control" parent="Camera/Node2D"]
 texture_filter = 1
 custom_minimum_size = Vector2(320, 32)
 layout_mode = 3
@@ -460,7 +581,7 @@ offset_top = -361.0
 offset_right = -267.0
 offset_bottom = -329.0
 script = ExtResource("6_aldy5")
-inventory_path = NodePath("../InventoryGridStacked")
+inventory_path = NodePath("../../InventoryGridStacked")
 draw_selections = true
 
 [node name="Player" parent="." instance=ExtResource("1_2dsc8")]
@@ -511,4 +632,13 @@ offset_right = 2303.0
 offset_bottom = 561.0
 color = Color(0.172549, 0.188235, 0.243137, 1)
 
+[node name="Blocks" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_7f7td")
+format = 2
+
+[node name="block delay" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
 [connection signal="removed_from_inventory" from="Camera/InventoryGridStacked/wood" to="." method="_on_wood_removed_from_inventory"]
+[connection signal="timeout" from="block delay" to="." method="_on_block_delay_timeout"]
