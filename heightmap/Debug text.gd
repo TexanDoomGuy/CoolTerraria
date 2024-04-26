@@ -13,7 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	player_x.text = "Player.y = "+str(player.position.x)
-	player_y.text = "Player.x = "+str(player.position.y)
+	player_x.text = "Player pos = "+str(player.position)
+	player_y.text = "Player.vel = "+str(player.velocity)
 	aaa.text = "FPS = "+str(Engine.get_frames_per_second())
 
