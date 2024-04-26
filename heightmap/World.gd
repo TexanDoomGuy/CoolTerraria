@@ -209,6 +209,14 @@ func _input(event):
 						elif tile_map.get_cell_atlas_coords(0,Vector2i(tile_pos.x-1,tile_pos.y)) != Vector2i(-1,-1):
 							create_block(tile_pos, grass,tile_map)
 							remove_item(dirt, 1)
+						elif blocks.get_cell_atlas_coords(0,Vector2i(tile_pos.x,tile_pos.y+1)) != Vector2i(-1,-1):
+							create_block(tile_pos, dirt_block,tile_map)
+						elif blocks.get_cell_atlas_coords(0,Vector2i(tile_pos.x,tile_pos.y-1)) != Vector2i(-1,-1):
+							create_block(tile_pos, dirt_block,tile_map)
+						elif blocks.get_cell_atlas_coords(0,Vector2i(tile_pos.x+1,tile_pos.y)) != Vector2i(-1,-1):
+							create_block(tile_pos, dirt_block,tile_map)
+						elif blocks.get_cell_atlas_coords(0,Vector2i(tile_pos.x-1,tile_pos.y)) != Vector2i(-1,-1):
+							create_block(tile_pos, dirt_block,tile_map)
 						
 			if placed_item == "Wood":
 				if tile_map.get_cell_atlas_coords(0,tile_pos) != Vector2i(-1,-1):
