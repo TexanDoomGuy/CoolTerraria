@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cgtpv0u1s0qv2"]
+[gd_scene load_steps=26 format=3 uid="uid://cgtpv0u1s0qv2"]
 
 [ext_resource type="PackedScene" uid="uid://dfi4517dq7fr7" path="res://character_body_2d.tscn" id="1_2dsc8"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/heightmap_generator/heightmap_generator_2d.gd" id="1_7xrgd"]
@@ -18,7 +18,6 @@
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="14_rfj6t"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="16_ul1g2"]
 [ext_resource type="Texture2D" uid="uid://y73y1ietphv7" path="res://Sprite-0001.png" id="17_iv822"]
-[ext_resource type="Texture2D" uid="uid://cx1f8vb0koay1" path="res://icon.svg" id="19_bknln"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5d3k"]
 texture = ExtResource("10_wnho1")
@@ -668,25 +667,6 @@ format = 2
 [node name="block delay" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("19_bknln")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("19_bknln")
-offset = Vector2(128, 0)
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("19_bknln")
-offset = Vector2(0, 128)
-
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("19_bknln")
-offset = Vector2(128, 128)
 
 [connection signal="removed_from_inventory" from="Camera/InventoryGridStacked/wood" to="." method="_on_wood_removed_from_inventory"]
 [connection signal="timeout" from="block delay" to="." method="_on_block_delay_timeout"]
