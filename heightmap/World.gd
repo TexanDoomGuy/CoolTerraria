@@ -23,6 +23,8 @@ const CtrlInventoryGridBasic = preload("res://addons/gloot/ui/ctrl_inventory_gri
 
 @onready var sprite_2d = $Sprite2D
 
+var checked_tile = "null"
+
 var can_place = 1
 
 var dirt_stack = 1
@@ -105,10 +107,25 @@ func remove_item(item, amount):
 				amount += dirt_stack-amount
 			inventory.set_item_stack_size(dirt, dirt_stack-amount)
 	
+func check_tile_id(tilepos,tile_map_choice):
+		print(tilepos)
+		if tile_map_choice == "notblocks":
+			if int(tile_map.get_cell_source_id(0,tilepos)) != -1:
+				checked_tile = "notblocks"				
+				return(tile_map.get_cell_source_id(0,tilepos))
+		elif tile_map_choice == "blocks":
+			if int(blocks.get_cell_source_id(0,tilepos)) != -1:
+				checked_tile = "blocks"		
+				return(blocks.get_cell_source_id(0,tilepos))
+
+
+
+func check_tile(tilepos):
+	return(tile_map.get_cell_atlas_coords(0,tilepos))
 
 func select_item():
 	for i in range(11):
-		print(i)
+		#print(i)
 		if item_select.position.x == -585 + (32*(i-1)):
 			item_selected = Vector2i(i-1,0)
 
@@ -124,7 +141,7 @@ func select_item():
 
 func select_item_ns():
 	for i in range(11):
-		print(i)
+		#print(i)
 		if item_select.position.x == -585 + (32*(i-1)):
 			item_selected = Vector2i(i-1,0)
 
@@ -144,14 +161,15 @@ func _ready():
 		create_block(coolgrass[i]+Vector2i(0,1),dirt_block,tile_map)		
 	#inventory.create_and_add_item("Dirt")
 	add_item(wood,99)
-	add_item(dirt,99)
+	#add_item(dirt,99)
+	#remove_item(dirt, 1)
 func _input(event):
 	select_item()
 	if Input.is_action_pressed("ui_up"):
 		if placed_item == "Wood":
 			add_item(wood,1)
 		elif placed_item == "Dirt":
-			add_item(dirt,1)
+			add_item(dirt,100000000)
 	if Input.is_action_pressed("ui_down"):
 		if placed_item == "Wood":
 			remove_item(wood,1)
@@ -220,24 +238,38 @@ func _input(event):
 						
 			if placed_item == "Wood":
 				if tile_map.get_cell_atlas_coords(0,tile_pos) != Vector2i(-1,-1):
-					create_block(tile_pos,wood_plank_ph, blocks)	
+					create_block(tile_pos,wood_plank_ph, blocks)
+					remove_item(wood, 1)	
 				elif tile_map.get_cell_atlas_coords(0,Vector2i(tile_pos.x,tile_pos.y+1)) != Vector2i(-1,-1):
 					create_block(tile_pos,wood_plank_ph, blocks)
+					remove_item(wood, 1)
 				elif tile_map.get_cell_atlas_coords(0,Vector2i(tile_pos.x,tile_pos.y-1)) != Vector2i(-1,-1):
 					create_block(tile_pos,wood_plank_ph, blocks)
+					remove_item(wood, 1)
 				elif tile_map.get_cell_atlas_coords(0,Vector2i(tile_pos.x+1,tile_pos.y)) != Vector2i(-1,-1):
 					create_block(tile_pos,wood_plank_ph, blocks)
+					remove_item(wood, 1)
 				elif tile_map.get_cell_atlas_coords(0,Vector2i(tile_pos.x-1,tile_pos.y)) != Vector2i(-1,-1):
 					create_block(tile_pos,wood_plank_ph, blocks)
+					remove_item(wood, 1)
 				elif blocks.get_cell_atlas_coords(0,Vector2i(tile_pos.x,tile_pos.y+1)) != Vector2i(-1,-1):
 					create_block(tile_pos,wood_plank_ph, blocks)
+					remove_item(wood, 1)
 				elif blocks.get_cell_atlas_coords(0,Vector2i(tile_pos.x,tile_pos.y-1)) != Vector2i(-1,-1):
 					create_block(tile_pos,wood_plank_ph, blocks)
+					remove_item(wood, 1)
 				elif blocks.get_cell_atlas_coords(0,Vector2i(tile_pos.x+1,tile_pos.y)) != Vector2i(-1,-1):
 					create_block(tile_pos,wood_plank_ph, blocks)
+					remove_item(wood, 1)
 				elif blocks.get_cell_atlas_coords(0,Vector2i(tile_pos.x-1,tile_pos.y)) != Vector2i(-1,-1):
 					create_block(tile_pos,wood_plank_ph, blocks)
-								
+					remove_item(wood, 1)
+				if blocks.get_cell_atlas_coords(0,tile_pos) != Vector2i(-1,-1):
+					add_item(wood, 1)
+				if tile_map.get_cell_atlas_coords(0,tile_pos) != Vector2i(-1,-1):
+					remove_item(wood, 1)
+				if tile_map.get_cell_atlas_coords(0,tile_pos) == Vector2i(-1,-1):
+					add_item(wood, 1)
 				$"block delay".start(0.05)
 				can_place = 0
 			if tile_map2.get_cell_atlas_coords(1,tile_pos2) != Vector2i(-1,-1):
@@ -247,12 +279,27 @@ func _input(event):
 
 
 	if Input.is_action_pressed("right click"):
-		var tile_pos = tile_map.local_to_map(get_global_mouse_position())
-		var tile_pos2 = tile_map2.local_to_map(get_global_mouse_position())
-		destroy_block(tile_pos,tile_map)
-		destroy_block(tile_pos,blocks)
+		if can_place == 1:
+			var tile_pos = tile_map.local_to_map(get_global_mouse_position())
+			var tile_pos2 = tile_map2.local_to_map(get_global_mouse_position())
+			var blocks_pos = blocks.local_to_map(get_global_mouse_position())
+			print(blocks_pos)
+			
+			check_tile_id(tile_pos,"notblocks")
+			check_tile_id(blocks_pos,"blocks")
+			if checked_tile == "notblocks":
+				if check_tile_id(tile_pos,"notblocks") == 0:
+					add_item(dirt, 1)
+			if checked_tile == "blocks":
+				if check_tile_id(blocks_pos, "blocks") == 0:
+					add_item(wood, 1)
+			destroy_block(tile_pos,tile_map)
+			destroy_block(tile_pos,blocks)	
+			$"block delay".start(0.05)
+			can_place = 0
+			
 
 
 func _on_block_delay_timeout():
-	print("a")
+	#print("a")
 	can_place = 1
